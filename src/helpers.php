@@ -1,7 +1,7 @@
 <?php
 
 if (! function_exists('create_log_config')) {
-    function create_log_config(string $name, string $path = null): array
+    function create_log_config(string $name, string $path = null, array $options = []): array
     {
         $path = $path ?? $name;
 
@@ -10,7 +10,7 @@ if (! function_exists('create_log_config')) {
                 'driver' => 'daily',
                 'path' => storage_path("logs/{$path}/{$name}.log"),
                 'level' => env('LOG_LEVEL', 'debug'),
-                'days' => env('LOG_DAILY_DAYS', 14),
+                'days' => env('LOG_DAILY_DAYS', $options['days'] ?? 14),
             ],
 
             "{$name}-elastic" => [
