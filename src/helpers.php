@@ -19,8 +19,8 @@ if (! function_exists('create_log_config')) {
                 'level' => 'debug',
                 'formatter' => \Monolog\Formatter\ElasticsearchFormatter::class,
                 'formatter_with' => [
-                    'index' => env('
-                        ELASTIC_LOGS_INDEX',
+                    'index' => env(
+                        'ELASTIC_LOGS_INDEX',
                         strtolower(preg_replace('/\s|\-/', '_', env('APP_NAME')))
                     )."-{$name}",
                     'type' => '_doc',
